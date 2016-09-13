@@ -1,0 +1,33 @@
+{
+  "name": "socket.io_quiz_app",
+  "version": "0.1.0",
+  "author" : "k-kuwahara",
+  "main"   : "index.js",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=6.2.0"
+  },
+  "devDependencies": {
+    "socker.io"     : "~1.4.8",
+    "gulp"          : "~3.9.1",
+    "gulp-uglify"   : "~1.5.3",
+    "gulp-rename"   : "~1.2.2",
+    "gulp-sass"     : "~2.3.1",
+    "gulp-plumber"  : "~1.1.0",
+    "gulp-jshint"   : "2.x"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+http://ec2-52-192-36-214.ap-northeast-1.compute.amazonaws.com/kiyohito/socket.io_quiz_app"
+  },
+  "bugs": {
+    "url": "http://ec2-52-192-36-214.ap-northeast-1.compute.amazonaws.com/kiyohito/socket.io_quiz_app/issues"
+  }
+}
