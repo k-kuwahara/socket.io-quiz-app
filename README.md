@@ -18,7 +18,7 @@ Please this command on your terminal.
 ```cmd
 $ cd socket.io_quiz_app
 $ npm install
-$ cd src/
+$ cd src/public
 $ node server
 ```
 
