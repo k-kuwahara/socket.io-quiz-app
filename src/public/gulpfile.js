@@ -34,6 +34,7 @@ gulp.task('lint', function() {
    error_handler.task = 'lint';
    return gulp.src(['js/*.js'])
       .pipe(plumber(error_handler))
+      .pipe(eslint( { useEslintrc: false } ))
       .pipe(eslint.format())
       .pipe(eslint.failOnError())
       .pipe(plumber.stop());
