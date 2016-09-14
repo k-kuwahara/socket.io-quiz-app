@@ -8,30 +8,31 @@ var gulp     = require('gulp'),
     rename   = require('gulp-rename'),
     jade     = require('gulp-jade');
 
-// 共通plumber処理
-function error_handler(task) {
-   plumber({
-      // エラーをハンドル
-      errorHandler: function(error) {
-         var task_name = task;
-         var title     = '[task]' + task_name + ' ' + error.plugin;
-         var error_msg = 'error: ' + error.message;
-         // コンソールにエラーを出力
-         console.error(title + '\n' + error_msg);
-         // エラーを通知
-         notifier.notify({
-           title  : title,
-           message: error_msg,
-           time: 3000
-         });
-      }
-   });
-}
+// 共通エラーハンドラー
+var error_handler = {
+   // タスクネーム
+   task: '',
+   // エラーをハンドル
+   errorHandler: function(error) {
+      var task_name = task;
+      var title     = '[task]' + task_name + ' ' + error.plugin;
+      var error_msg = 'error: ' + error.message;
+      // コンソールにエラーを出力
+      console.error(title + '\n' + error_msg);
+      // エラーを通知
+      notifier.notify({
+        title  : title,
+        message: error_msg,
+        time: 3000
+      });
+   }
+};
 
 // eslint タスク
 gulp.task('lint', function() {
+   error_handler.task = 'lint';
    return gulp.src(['js/*.js'])
-      .pipe(error_handler('lint'))
+      .pipe(plumber(error_handler))
       .pipe(eslint.format())
       .pipe(eslint.failOnError())
       .pipe(plumber.stop());
@@ -39,8 +40,9 @@ gulp.task('lint', function() {
 
 // scss タスク
 gulp.task('scss', function() {
+   error_handler.task = 'scss';
    return gulp.src(['scss/*.scss'])
-      .pipe(error_handler('scss'))
+      .pipe(plumber(error_handler))
       .pipe(sass({ outputStyle: 'extended' }))
       .pipe(gulp.dest('css'))
       .pipe(plumber.stop());
@@ -48,10 +50,11 @@ gulp.task('scss', function() {
 
 // jade タスク
 gulp.task('jade', function() {
+   error_handler.task = 'jade';
    return gulp.src(['jade/*.jade'])
-      .pipe(error_handler('jade'))
+      .pipe(plumber(error_handler))
       .pipe(jade({ pretty: true }))
-      .pipe(gulp.dest('jade'))
+      .pipe(gulp.dest('html'))
       .pipe(plumber.stop());
 });
 

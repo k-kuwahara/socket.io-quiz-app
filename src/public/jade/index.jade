@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title クイズアプリ
+    script.
+       $(function() {
+          var socket = io.connect();
+
+          socket.on('greeting', function(data, fn) {
+             var answer = confirm(data.message);
+             fn(answer);
+          });
+       });
+ 
