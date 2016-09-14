@@ -9,7 +9,7 @@ var gulp     = require('gulp'),
     jade     = require('gulp-jade');
 
 // 共通plumber処理
-var error_handler = function(task) {
+function error_handler(task) {
    plumber({
       // エラーをハンドル
       errorHandler: function(error) {
@@ -86,6 +86,4 @@ gulp.task('watch', function() {
    });
 });
 
-gulp.task('default', ['lint', 'scss', 'jade'], function() {
-    gulp.run('watch');
-});
+gulp.task('default', ['watch']);
