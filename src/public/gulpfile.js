@@ -5,6 +5,7 @@ var gulp     = require('gulp'),
     eslint   = require('gulp-eslint'),
     plumber  = require('gulp-plumber'),
     notifier = require('node-notifier'),
+    cached   = require('gulp-cached'),
     uglify   = require('gulp-uglify'),
     rename   = require('gulp-rename'),
     jade     = require('gulp-jade');
@@ -15,7 +16,7 @@ var error_handler = {
    task: '',
    // エラーをハンドル
    errorHandler: function(error) {
-      var title     = '[task]' + task + ' ' + error.plugin;
+      var title     = '[task]' + this.task + ' ' + error.plugin;
       var error_msg = 'error: ' + error.message;
       // コンソールにエラーを出力
       console.error(title + '\n' + error_msg);
@@ -43,6 +44,7 @@ gulp.task('scss', function() {
    error_handler.task = 'scss';
    return gulp.src(['scss/*.scss'])
       .pipe(plumber(error_handler))
+      .pipe(cached('sassfiles'))
       .pipe(sass({ outputStyle: 'extended' }))
       .pipe(gulp.dest('css'))
       .pipe(plumber.stop());
