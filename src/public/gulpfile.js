@@ -1,6 +1,7 @@
 "use strict";
 
 var gulp     = require('gulp'),
+    sass     = require('gulp-sass'),
     eslint   = require('gulp-eslint'),
     plumber  = require('gulp-plumber'),
     notifier = require('node-notifier'),
@@ -14,8 +15,7 @@ var error_handler = {
    task: '',
    // エラーをハンドル
    errorHandler: function(error) {
-      var task_name = task;
-      var title     = '[task]' + task_name + ' ' + error.plugin;
+      var title     = '[task]' + task + ' ' + error.plugin;
       var error_msg = 'error: ' + error.message;
       // コンソールにエラーを出力
       console.error(title + '\n' + error_msg);
@@ -89,4 +89,5 @@ gulp.task('watch', function() {
    });
 });
 
+// derfault タスク
 gulp.task('default', ['watch']);
