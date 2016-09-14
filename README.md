@@ -5,13 +5,10 @@ It's an app made by [Socket.IO](http://socket.io/).
 ## Development Environment
 - Node.js
 - Socket.IO
-- gulp
-- gulp-uglify
-- gulp-rename
-- gulp-sass
-- gulp-plumber
-- gulp-jshint
-- jshint-stylish
+- Sass(Scss)
+- Bootstrap
+- Eslint
+- Gulp
 
 
 ## How to use
