@@ -9,6 +9,7 @@ It's an app made by [Socket.IO](http://socket.io/).
 - Bootstrap
 - Eslint
 - Gulp
+- Jade
 
 
 ## How to use
