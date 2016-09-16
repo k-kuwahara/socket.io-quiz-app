@@ -5,18 +5,28 @@
     <title>クイズアプリ</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-      $(function() {
-         var socket = io.connect();
-      
-         socket.on('greeting', function(data, fn) {
-            var answer = confirm(data.message);
-            fn(answer);
-         });
-      });
-    </script>
   </head>
   <body>
     <h1>クイズアプリ</h1>
+    <form id="my_form">
+      <input id="msg" type="text">
+      <button>Send!!</button>
+    </form>
+    <ul id="logs"></ul>
+    <script>
+      $(function() {
+         var socket = io.connect()
+
+         $('#my_form').submit(function(e) {
+            e.preventDefault()
+            socket.emit('emit_from_client', $('#msg').val())
+            $('#msg').val('').focus()
+         })
+
+         socket.on('emit_from_server', function(data) {
+            $('#logs').append($('<li>').text(data))
+         })
+      })
+    </script>
   </body>
 </html>
