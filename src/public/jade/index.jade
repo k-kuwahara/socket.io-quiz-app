@@ -11,6 +11,8 @@ html
       input#msg(type="text")
       button Send!!
     ul#logs
+
+    include modal
     script.
        $(function() {
           var socket = io.connect()
@@ -25,4 +27,3 @@ html
              $('#logs').append($('<li>').text(data))
           })
        })
-
