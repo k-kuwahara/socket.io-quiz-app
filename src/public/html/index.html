@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>クイズアプリ</title>
-    <style src="/css/bootstrap.min.css"></style>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
@@ -16,23 +16,6 @@
     </form>
     <ul id="logs"></ul>
     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">Launch demo modal</button>
-    <div class="modal fade">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            <p>One fine body&hellip;</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <script>
       $(function() {
          var socket = io.connect()
@@ -47,6 +30,24 @@
             $('#logs').append($('<li>').text(data))
          })
       })
+      
     </script>
   </body>
+  <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+    <div role="document" class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
+          <h4 id="mymodalLabel" class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <p>One fine body&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
