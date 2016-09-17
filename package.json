@@ -21,7 +21,8 @@
     "gulp-cached"   : "~1.1.0",
     "jade"         : "~1.11.0",
     "gulp-jade"    : "~1.1.0",
-    "babel"        : "~6.5.2"
+    "babel"        : "~6.5.2",
+    "gulp-babel"   : "~6.1.2"
   },
   "scripts": {
     "lint"  : "gulp lint",
