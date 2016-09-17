@@ -10,6 +10,7 @@ It's an app made by [Socket.IO](http://socket.io/).
 - Eslint
 - Gulp
 - Jade
+- Babel
 
 
 ## How to use
