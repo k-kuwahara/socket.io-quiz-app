@@ -10,6 +10,22 @@ var gulp     = require('gulp'),
     rename   = require('gulp-rename'),
     jade     = require('gulp-jade');
 
+var paths = {
+  'js'      : './js/*.js',
+  'css'     : './css/**/*.css',
+  'scss'    : './scss/**/*.scss',
+  'scss_dir': './scss/',
+  'css_dir' : './css/',
+  'jade'    : './jade/**/*.jade'
+}
+
+var excluded = {
+   'jquery':   '!./js/jquery*.js',
+   'bootstrap':'!./js/bootstrap*.js',
+   'bootstrap_sub':'!./js/bootstrap/*.js'
+}
+
+
 // 共通エラーハンドラー
 var error_handler = {
    // タスクネーム
@@ -32,7 +48,11 @@ var error_handler = {
 // eslint タスク
 gulp.task('lint', function() {
    error_handler.task = 'lint';
-   return gulp.src(['js/*.js'])
+   return gulp.src([
+         paths.js,
+         excluded.bootstrap,
+         excluded.bootstrap_sub
+      ])
       .pipe(plumber(error_handler))
       .pipe(eslint( { useEslintrc: false } ))
       .pipe(eslint.format())
@@ -43,7 +63,7 @@ gulp.task('lint', function() {
 // scss タスク
 gulp.task('scss', function() {
    error_handler.task = 'scss';
-   return gulp.src(['scss/*.scss'])
+   return gulp.src(paths.scss)
       .pipe(plumber(error_handler))
       .pipe(cached('sassfiles'))
       .pipe(sass({ outputStyle: 'extended' }))
@@ -54,7 +74,7 @@ gulp.task('scss', function() {
 // jade タスク
 gulp.task('jade', function() {
    error_handler.task = 'jade';
-   return gulp.src(['jade/*.jade'])
+   return gulp.src(paths.jade)
       .pipe(plumber(error_handler))
       .pipe(jade({ pretty: true }))
       .pipe(gulp.dest('html'))
@@ -63,7 +83,7 @@ gulp.task('jade', function() {
 
 // min タスク(css)
 gulp.task('cssmin', function() {
-   return gulp.src(['css/*.css'])
+   return gulp.src(paths.css)
       .pipe(uglify())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('css/min/'));
@@ -71,7 +91,7 @@ gulp.task('cssmin', function() {
 
 // min タスク(js)
 gulp.task('jsmin', function() {
-   return gulp.src(['js/*.js'])
+   return gulp.src(paths.js)
       .pipe(uglify())
       .pipe(rename({suffix: '.min'}))
       .pipe(gulp.dest('js/min'));
@@ -79,15 +99,15 @@ gulp.task('jsmin', function() {
 
 // watch タスク
 gulp.task('watch', function() {
-    gulp.watch('js/*.js', function() {
+    gulp.watch(paths.js, function() {
         gulp.run('lint');
     });
 
-   gulp.watch('scss/*.scss', function() {
+   gulp.watch(paths.scss, function() {
       gulp.run('scss');
    });
 
-   gulp.watch('jade/*.jade', function() {
+   gulp.watch(paths.jade, function() {
       gulp.run('jade');
    });
 });
