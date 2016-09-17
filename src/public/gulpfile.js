@@ -67,7 +67,7 @@ gulp.task('scss', function() {
       .pipe(plumber(error_handler))
       .pipe(cached('sassfiles'))
       .pipe(sass({ outputStyle: 'extended' }))
-      .pipe(gulp.dest('css'))
+      .pipe(gulp.dest(paths.css_dir))
       .pipe(plumber.stop());
 });
 

@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>クイズアプリ</title>
+    <style src="/css/bootstrap.min.css"></style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
@@ -13,6 +15,7 @@
       <button>Send!!</button>
     </form>
     <ul id="logs"></ul>
+    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">Launch demo modal</button>
     <div class="modal fade">
       <div role="document" class="modal-dialog">
         <div class="modal-content">
@@ -33,13 +36,13 @@
     <script>
       $(function() {
          var socket = io.connect()
-
+      
          $('#my_form').submit(function(e) {
             e.preventDefault()
             socket.emit('emit_from_client', $('#msg').val())
             $('#msg').val('').focus()
          })
-
+      
          socket.on('emit_from_server', function(data) {
             $('#logs').append($('<li>').text(data))
          })
