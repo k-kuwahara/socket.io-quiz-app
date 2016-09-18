@@ -1,0 +1,9 @@
+version: '2'
+services:
+  web:
+    build: ./src/public
+    volumes:
+      - ./src/public:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "8000:8000"
