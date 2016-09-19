@@ -1,3 +1,4 @@
 node_modules/
+src/public/npm-debug.log
 !src/public/js/min/*
 !src/public/css/min*
