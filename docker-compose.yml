@@ -1,9 +1,16 @@
 version: '2'
 services:
-  web:
-    build: ./src/public
+  service:
+    build: ./service
     volumes:
-      - ./src/public:/usr/src/app
+      - ./service:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - "8000:8000"
+  admin:
+    build: ./admin
+    volumes:
+      - ./admin:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "8080:8000"

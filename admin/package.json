@@ -1,0 +1,10 @@
+{
+    "name": "docker_admin_app",
+    "version": "0.0.1",
+    "description": "nodejs on Docker",
+    "author": "Shinya Ota <ota@lepra.jp>",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    }
+}
