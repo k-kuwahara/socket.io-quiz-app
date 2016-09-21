@@ -12,8 +12,10 @@ var gulp     = require('gulp'),
 
 var paths = {
   'js'      : './js/*.js',
+  'es6'     : './es6/*.es6',
   'css'     : './css/**/*.css',
   'scss'    : './scss/**/*.scss',
+  'js_dir'  : './js/',
   'scss_dir': './scss/',
   'css_dir' : './css/',
   'jade'    : './jade/**/*.jade'
@@ -44,6 +46,16 @@ var error_handler = {
       });
    }
 };
+
+// babel タスク
+gulp.task('babel', function() {
+   error_handler.task = 'babel';
+   return gulp.src([paths.es6])
+      .pipe(plumber(error_handler))
+      .pipe(babel())
+      .pipe(gulp.dest(paths.js_dir)
+      .pipe(plumber.stop());
+});
 
 // eslint タスク
 gulp.task('lint', function() {
@@ -99,8 +111,12 @@ gulp.task('jsmin', function() {
 
 // watch タスク
 gulp.task('watch', function() {
+    gulp.watch(paths.es6, function() {
+       gulp.run('babel');
+    });
+
     gulp.watch(paths.js, function() {
-        gulp.run('lint');
+       gulp.run('lint');
     });
 
    gulp.watch(paths.scss, function() {
