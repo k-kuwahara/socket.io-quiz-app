@@ -34,7 +34,7 @@
     "cssmin": "gulp cssmin",
     "jsmin" : "gulp jsmin",
     "watch" : "gulp watch",
-    "start" : "node src/public/server"
+    "start" : "node src/public/js/server"
   },
   "repository": {
     "type": "git",
