@@ -114,9 +114,6 @@ gulp.task('jsmin', function() {
 gulp.task('watch', function() {
     gulp.watch(paths.es6, function() {
        gulp.run('babel');
-    });
-
-    gulp.watch(paths.js, function() {
        gulp.run('lint');
     });
 

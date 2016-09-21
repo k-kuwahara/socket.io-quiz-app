@@ -23,5 +23,6 @@ io.sockets.on('connection', function (socket) {
    });
 });
 
-server.listen(config.port);
-console.info('server listening...');
+server.listen(config.port, function () {
+   console.info('server listening...');
+});

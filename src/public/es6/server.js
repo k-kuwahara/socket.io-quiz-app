@@ -26,5 +26,6 @@ io.sockets.on('connection', (socket) => {
 });
 
 // server boot
-server.listen(config.port);
-console.info('server listening...');
+server.listen(config.port, () => {
+   console.info('server listening...')
+})
