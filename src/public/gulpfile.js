@@ -8,11 +8,12 @@ var gulp     = require('gulp'),
     cached   = require('gulp-cached'),
     uglify   = require('gulp-uglify'),
     rename   = require('gulp-rename'),
+    babel    = require('gulp-babel'),
     jade     = require('gulp-jade');
 
 var paths = {
   'js'      : './js/*.js',
-  'es6'     : './es6/*.es6',
+  'es6'     : './es6/*.js',
   'css'     : './css/**/*.css',
   'scss'    : './scss/**/*.scss',
   'js_dir'  : './js/',
@@ -53,7 +54,7 @@ gulp.task('babel', function() {
    return gulp.src([paths.es6])
       .pipe(plumber(error_handler))
       .pipe(babel())
-      .pipe(gulp.dest(paths.js_dir)
+      .pipe(gulp.dest(paths.js_dir))
       .pipe(plumber.stop());
 });
 
