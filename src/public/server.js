@@ -2,6 +2,7 @@
 var fs     = require('fs'),
     server = require('http').createServer(handler),
     config = require('./js/config'),
+    app    = require('express')(),
     io     = require('socket.io').listen(server);
 server.listen(config.port);
 
