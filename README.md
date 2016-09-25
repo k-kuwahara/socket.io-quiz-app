@@ -5,6 +5,7 @@ It's an app made by [Socket.IO](http://socket.io/).
 ## Development Environment
 - Node.js
 - Socket.IO
+- Express
 - Sass(Scss)
 - Bootstrap
 - Eslint
