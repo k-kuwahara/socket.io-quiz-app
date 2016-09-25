@@ -1,12 +1,12 @@
-div#myModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+div#quiz_modal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
   div.modal-dialog(role="document")
     div.modal-content
       div.modal-header
         button.close(type="button" data-dismiss="modal" aria-label="Close")
           span(aria-hidden="true") &times;
-        h4#mymodalLabel.modal-title Modal title
+        h4#modal_title.modal-title
       div.modal-body
-        p One fine body&hellip;
+        p#modal_body
       div.modal-footer
         button.btn.btn-secondary(type="button" data-dismiss="modal") Close
         button.btn.btn-primary(type="button") Save changes

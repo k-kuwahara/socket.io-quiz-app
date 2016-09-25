@@ -5,8 +5,9 @@
     <title>クイズアプリ</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.slim.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/client.js"></script>
   </head>
   <body>
     <h1>クイズアプリ</h1>
@@ -15,33 +16,16 @@
       <button>Send!!</button>
     </form>
     <ul id="logs"></ul>
-    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">Launch demo modal</button>
-    <script>
-      $(function() {
-         var socket = io.connect()
-      
-         $('#my_form').submit(function(e) {
-            e.preventDefault()
-            socket.emit('emit_from_client', $('#msg').val())
-            $('#msg').val('').focus()
-         })
-      
-         socket.on('emit_from_server', function(data) {
-            $('#logs').append($('<li>').text(data))
-         })
-      })
-      
-    </script>
   </body>
-  <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+  <div id="quiz_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
     <div role="document" class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
-          <h4 id="mymodalLabel" class="modal-title">Modal title</h4>
+          <h4 id="modal_title" class="modal-title"></h4>
         </div>
         <div class="modal-body">
-          <p>One fine body&hellip;</p>
+          <p id="modal_body"></p>
         </div>
         <div class="modal-footer">
           <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
