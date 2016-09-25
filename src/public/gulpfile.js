@@ -9,6 +9,7 @@ var gulp     = require('gulp'),
     uglify   = require('gulp-uglify'),
     rename   = require('gulp-rename'),
     babel    = require('gulp-babel'),
+    watch    = require('gulp-watch'),
     jade     = require('gulp-jade');
 
 var paths = {
@@ -112,17 +113,17 @@ gulp.task('jsmin', function() {
 
 // watch タスク
 gulp.task('watch', function() {
-    gulp.watch(paths.es6, function() {
-       gulp.run('babel');
-       gulp.run('lint');
+    watch(paths.es6, function() {
+       gulp.start('babel');
+       gulp.start('lint');
     });
 
-   gulp.watch(paths.scss, function() {
-      gulp.run('scss');
+   watch(paths.scss, function() {
+      gulp.start('scss');
    });
 
-   gulp.watch(paths.jade, function() {
-      gulp.run('jade');
+   watch(paths.jade, function() {
+      gulp.start('jade');
    });
 });
 
