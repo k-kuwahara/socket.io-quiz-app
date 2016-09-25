@@ -23,6 +23,7 @@ $ npm install
 $ cd src/public
 $ node server
 ```
+and please access `http://yourdomain:8000/` in your favorite browser.
 
 
 ## License
